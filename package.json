@@ -1,12 +1,26 @@
 {
   "name": "@fluencyy/file-path-bookmarks",
+  "private": false,
   "description": "A simple file path bookmark management utility",
   "version": "1.0.0",
   "author": "Andrew Brey",
-  "bin": {
-    "file-path-bookmarks": "./bin/run"
-  },
+  "license": "MIT",
+  "homepage": "https://github.com/andrewbrey/file-path-bookmarks",
+  "repository": "andrewbrey/file-path-bookmarks",
   "bugs": "https://github.com/andrewbrey/file-path-bookmarks/issues",
+  "main": "lib/index.js",
+  "bin": {
+    "file-path-bookmarks": "./bin/run",
+    "fpb": "./bin/run"
+  },
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "posttest": "eslint . --ext .ts --config .eslintrc.js",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev readme",
+    "test": "echo \"<('.'<) (>'.')>\"",
+    "version": "oclif-dev readme && git add README.md",
+    "tarball": "oclif-dev pack"
+  },
   "dependencies": {
     "@oclif/command": "1.5.19",
     "@oclif/config": "1.14.0",
@@ -15,35 +29,28 @@
   },
   "devDependencies": {
     "@oclif/dev-cli": "1.22.2",
-    "@types/node": "10.17.17",
-    "eslint": "5.16.0",
-    "eslint-config-oclif": "3.1.0",
-    "eslint-config-oclif-typescript": "0.1.0",
+    "@types/node": "13.9.2",
+    "@typescript-eslint/eslint-plugin": "2.24.0",
+    "@typescript-eslint/parser": "2.24.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.10.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "prettier": "1.19.1",
     "ts-node": "8.7.0",
     "typescript": "3.8.3"
-  },
-  "engines": {
-    "node": ">=8.0.0"
   },
   "files": [
     "/bin",
     "/lib"
   ],
-  "homepage": "https://github.com/andrewbrey/file-path-bookmarks",
-  "keywords": [
-    "oclif"
-  ],
-  "license": "MIT",
-  "main": "lib/index.js",
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "oclif": {
     "bin": "file-path-bookmarks"
   },
-  "repository": "andrewbrey/file-path-bookmarks",
-  "scripts": {
-    "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev readme",
-    "test": "echo NO TESTS",
-    "version": "oclif-dev readme && git add README.md"
-  },
-  "types": "lib/index.d.ts"
+  "keywords": [
+    "path",
+    "bookmark"
+  ]
 }
