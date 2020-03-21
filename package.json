@@ -2,7 +2,7 @@
   "name": "@fluencyy/file-path-bookmarks",
   "private": false,
   "description": "A simple file path bookmark management utility",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "Andrew Brey",
   "license": "MIT",
   "homepage": "https://github.com/andrewbrey/file-path-bookmarks",
