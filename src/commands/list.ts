@@ -5,7 +5,7 @@ import { allBookmarks } from '../lib/bookmarks';
 import { userConfig } from '../lib/config';
 
 export default class List extends Command {
-	static description = 'List all file path bookmarks';
+	static description = 'list all file path bookmarks';
 
 	static examples = ['$ file-path-bookmarks list'];
 
