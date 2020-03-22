@@ -16,7 +16,8 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "posttest": "eslint . --ext .ts --config .eslintrc.js",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev readme",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "postpack": "rm -f oclif.manifest.json",
     "test": "echo \"<('.'<) (>'.')>\"",
     "version": "oclif-dev readme && git add README.md",
     "tarball": "oclif-dev pack"
@@ -25,29 +26,45 @@
     "@oclif/command": "1.5.19",
     "@oclif/config": "1.14.0",
     "@oclif/plugin-help": "2.2.3",
+    "@oclif/plugin-not-found": "1.2.3",
+    "chalk": "3.0.0",
+    "fs-extra": "9.0.0",
+    "inquirer": "7.1.0",
+    "ts-dedent": "1.1.1",
     "tslib": "1.11.1"
   },
   "devDependencies": {
     "@oclif/dev-cli": "1.22.2",
+    "@types/fs-extra": "8.1.0",
+    "@types/inquirer": "6.5.0",
     "@types/node": "13.9.2",
     "@typescript-eslint/eslint-plugin": "2.24.0",
     "@typescript-eslint/parser": "2.24.0",
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.10.0",
     "eslint-plugin-prettier": "3.1.2",
+    "globby": "10.0.2",
     "prettier": "1.19.1",
     "ts-node": "8.7.0",
     "typescript": "3.8.3"
   },
   "files": [
     "/bin",
-    "/lib"
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
   ],
   "engines": {
     "node": ">=8.0.0"
   },
   "oclif": {
-    "bin": "file-path-bookmarks"
+    "commands": "./lib/commands",
+    "bin": "file-path-bookmarks",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-not-found"
+    ],
+    "dirname": "file-path-bookmarks"
   },
   "keywords": [
     "path",
