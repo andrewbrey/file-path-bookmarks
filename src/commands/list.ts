@@ -7,7 +7,7 @@ import { userConfig } from '../lib/config';
 export default class List extends Command {
 	static description = 'List all file path bookmarks';
 
-	static examples = [`$ fpb list`];
+	static examples = ['$ file-path-bookmarks list'];
 
 	static flags = {
 		help: flags.help({ char: 'h' }),

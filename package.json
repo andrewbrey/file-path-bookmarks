@@ -10,8 +10,7 @@
   "bugs": "https://github.com/andrewbrey/file-path-bookmarks/issues",
   "main": "lib/index.js",
   "bin": {
-    "file-path-bookmarks": "./bin/run",
-    "fpb": "./bin/run"
+    "file-path-bookmarks": "./bin/run"
   },
   "types": "lib/index.d.ts",
   "scripts": {
@@ -31,6 +30,7 @@
     "cli-ux": "5.4.5",
     "fs-extra": "9.0.0",
     "inquirer": "7.1.0",
+    "lodash": "4.17.15",
     "ts-dedent": "1.1.1",
     "tslib": "1.11.1"
   },
@@ -38,6 +38,7 @@
     "@oclif/dev-cli": "1.22.2",
     "@types/fs-extra": "8.1.0",
     "@types/inquirer": "6.5.0",
+    "@types/lodash": "4.14.149",
     "@types/node": "13.9.2",
     "@typescript-eslint/eslint-plugin": "2.24.0",
     "@typescript-eslint/parser": "2.24.0",

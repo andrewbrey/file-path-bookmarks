@@ -5,12 +5,12 @@ import { promptUserForConfig, userConfig, userConfigIsComplete } from '../lib/co
 import { prettyJSON } from '../lib/util';
 
 export default class Configure extends Command {
-	static description = 'Show or update bookmark configuration';
+	static description = 'show or update bookmark configuration';
 
 	static examples = [
 		dedent`
-		  $ fpb configure
-		  $ fpb configure --show
+		  $ file-path-bookmarks configure
+		  $ file-path-bookmarks configure --show
 		`,
 	];
 
