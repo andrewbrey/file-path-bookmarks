@@ -19,7 +19,7 @@ $ npm install -g file-path-bookmarks
 $ file-path-bookmarks COMMAND
 running command...
 $ file-path-bookmarks (-v|--version|version)
-file-path-bookmarks/1.0.0 linux-x64 node-v12.16.1
+file-path-bookmarks/1.0.1 linux-x64 node-v12.16.1
 $ file-path-bookmarks --help [COMMAND]
 USAGE
   $ file-path-bookmarks COMMAND
@@ -55,7 +55,7 @@ EXAMPLE
   $ file-path-bookmarks add /some/absolute/path
 ```
 
-_See code: [src/commands/add.ts](https://github.com/file-path-bookmarks/blob/v1.0.0/src/commands/add.ts)_
+_See code: [src/commands/add.ts](https://github.com/andrewbrey/file-path-bookmarks/blob/v1.0.1/src/commands/add.ts)_
 
 ## `file-path-bookmarks configure`
 
@@ -74,7 +74,7 @@ EXAMPLE
   $ file-path-bookmarks configure --show
 ```
 
-_See code: [src/commands/configure.ts](https://github.com/file-path-bookmarks/blob/v1.0.0/src/commands/configure.ts)_
+_See code: [src/commands/configure.ts](https://github.com/andrewbrey/file-path-bookmarks/blob/v1.0.1/src/commands/configure.ts)_
 
 ## `file-path-bookmarks find [NAME]`
 
@@ -95,7 +95,7 @@ EXAMPLE
   $ file-path-bookmarks find blog
 ```
 
-_See code: [src/commands/find.ts](https://github.com/file-path-bookmarks/blob/v1.0.0/src/commands/find.ts)_
+_See code: [src/commands/find.ts](https://github.com/andrewbrey/file-path-bookmarks/blob/v1.0.1/src/commands/find.ts)_
 
 ## `file-path-bookmarks help [COMMAND]`
 
@@ -129,7 +129,7 @@ EXAMPLE
   $ file-path-bookmarks list
 ```
 
-_See code: [src/commands/list.ts](https://github.com/file-path-bookmarks/blob/v1.0.0/src/commands/list.ts)_
+_See code: [src/commands/list.ts](https://github.com/andrewbrey/file-path-bookmarks/blob/v1.0.1/src/commands/list.ts)_
 
 ## `file-path-bookmarks remove [PATH]`
 
@@ -150,5 +150,5 @@ EXAMPLE
   $ file-path-bookmarks remove /some/absolute/path
 ```
 
-_See code: [src/commands/remove.ts](https://github.com/file-path-bookmarks/blob/v1.0.0/src/commands/remove.ts)_
+_See code: [src/commands/remove.ts](https://github.com/andrewbrey/file-path-bookmarks/blob/v1.0.1/src/commands/remove.ts)_
 <!-- commandsstop -->
