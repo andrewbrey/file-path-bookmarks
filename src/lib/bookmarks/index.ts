@@ -1,5 +1,6 @@
 import * as chalk from 'chalk';
 import { existsSync, mkdirpSync, readJSONSync, statSync, writeFileSync } from 'fs-extra';
+import { filter } from 'fuzzy';
 import { prompt } from 'inquirer';
 import { lowerCase } from 'lodash';
 import { isAbsolute, join, normalize } from 'path';
@@ -17,6 +18,10 @@ export interface SavedBookmarks {
 }
 
 export type ErrorMessage = string | undefined;
+export interface FuzzyMatchResult {
+	top?: Bookmark;
+	others: Bookmark[];
+}
 
 export const DEFAULT_BOOKMARKS: SavedBookmarks = { bookmarks: [] };
 export const MAX_NAME_LENGTH = 20;
@@ -28,6 +33,15 @@ export function allBookmarks(userConfig: UserConfiguration) {
 	const USER_BOOKMARKS = readJSONSync(BOOKMARKS_PATH) as SavedBookmarks;
 
 	return USER_BOOKMARKS;
+}
+
+export async function fuzzyFind(search: string = '', bookmarks: Bookmark[] = []): Promise<FuzzyMatchResult> {
+	const MATCHES = filter(search, bookmarks, { extract: ({ name }) => name });
+
+	return {
+		top: MATCHES.shift()?.original,
+		others: MATCHES.map(({ original }) => original) || [],
+	};
 }
 
 export async function addBookmark(
