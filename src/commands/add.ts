@@ -23,7 +23,7 @@ export default class Add extends Command {
 		help: flags.help({ char: 'h' }),
 	};
 
-	static args = [{ name: 'path', description: 'absolute file path of bookmark', required: false }];
+	static args = [{ name: 'path', description: 'absolute file path of bookmark (defaults to pwd)', required: false }];
 
 	async run() {
 		const { flags, args } = this.parse(Add);

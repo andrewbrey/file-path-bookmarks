@@ -92,8 +92,25 @@ export async function addBookmark(
 	writeBookmarksFile(sortBookmarksByProperty(currentBookmarks, 'name'), userConfig);
 }
 
+export async function removeBookmark(
+	userConfig: UserConfiguration,
+	path: string,
+	currentBookmarks: Bookmark[] = []
+): Promise<void> {
+	const EXISTING_IDX = existingBookmarkIndexByProperty(path, currentBookmarks, 'path');
+
+	if (EXISTING_IDX > -1) {
+		currentBookmarks.splice(EXISTING_IDX, 1);
+		writeBookmarksFile(sortBookmarksByProperty(currentBookmarks, 'name'), userConfig);
+	}
+}
+
 function existingBookmarkByProperty(newBookmarkPath: string, bookmarks: Bookmark[], property: keyof Bookmark) {
 	return bookmarks.find(bm => normalize(bm[property]) === normalize(newBookmarkPath));
+}
+
+function existingBookmarkIndexByProperty(newBookmarkPath: string, bookmarks: Bookmark[], property: keyof Bookmark) {
+	return bookmarks.findIndex(bm => normalize(bm[property]) === normalize(newBookmarkPath));
 }
 
 function sortBookmarksByProperty(bookmarks: Bookmark[], property: keyof Bookmark) {
