@@ -1,12 +1,12 @@
-@fluencyy/file-path-bookmarks
+andrewbrey/file-path-bookmarks
 =============================
 
 A simple file path bookmark management utility
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/@fluencyy/file-path-bookmarks.svg)](https://npmjs.org/package/@fluencyy/file-path-bookmarks)
-[![Downloads/week](https://img.shields.io/npm/dw/@fluencyy/file-path-bookmarks.svg)](https://npmjs.org/package/@fluencyy/file-path-bookmarks)
-[![License](https://img.shields.io/npm/l/@fluencyy/file-path-bookmarks.svg)](https://github.com/andrewbrey/file-path-bookmarks/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/andrewbrey/file-path-bookmarks.svg)](https://npmjs.org/package/andrewbrey/file-path-bookmarks)
+[![Downloads/week](https://img.shields.io/npm/dw/andrewbrey/file-path-bookmarks.svg)](https://npmjs.org/package/andrewbrey/file-path-bookmarks)
+[![License](https://img.shields.io/npm/l/andrewbrey/file-path-bookmarks.svg)](https://github.com/andrewbrey/file-path-bookmarks/blob/master/package.json)
 
 <!-- toc -->
 * [Usage](#usage)
