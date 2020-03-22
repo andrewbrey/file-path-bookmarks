@@ -1,5 +1,5 @@
 {
-  "name": "@fluencyy/file-path-bookmarks",
+  "name": "file-path-bookmarks",
   "private": false,
   "description": "A simple file path bookmark management utility",
   "version": "0.1.0",
