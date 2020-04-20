@@ -39,7 +39,7 @@
     "@oclif/dev-cli": "1.22.2",
     "@types/fs-extra": "8.1.0",
     "@types/inquirer": "6.5.0",
-    "@types/lodash": "4.14.149",
+    "@types/lodash": "4.14.150",
     "@types/node": "13.13.0",
     "@typescript-eslint/eslint-plugin": "2.27.0",
     "@typescript-eslint/parser": "2.28.0",
