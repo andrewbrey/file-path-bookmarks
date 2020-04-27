@@ -22,7 +22,7 @@
     "tarball": "oclif-dev pack"
   },
   "dependencies": {
-    "@oclif/command": "1.5.19",
+    "@oclif/command": "1.5.20",
     "@oclif/config": "1.15.1",
     "@oclif/plugin-help": "2.2.3",
     "@oclif/plugin-not-found": "1.2.3",
