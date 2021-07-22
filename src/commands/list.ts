@@ -5,35 +5,35 @@ import { allBookmarks } from '../lib/bookmarks';
 import { userConfig } from '../lib/config';
 
 export default class List extends Command {
-	static description = 'list all file path bookmarks';
+  static description = 'list all file path bookmarks';
 
-	static examples = ['$ file-path-bookmarks list'];
+  static examples = ['$ file-path-bookmarks list'];
 
-	static flags = {
-		help: flags.help({ char: 'h' }),
-	};
+  static flags = {
+    help: flags.help({ char: 'h' }),
+  };
 
-	async run() {
-		this.parse(List);
+  async run() {
+    this.parse(List);
 
-		const USER_CONFIG = await userConfig(this.config, true);
-		const { bookmarks } = allBookmarks(USER_CONFIG);
+    const USER_CONFIG = await userConfig(this.config, true);
+    const { bookmarks } = allBookmarks(USER_CONFIG);
 
-		cli.table(
-			bookmarks,
-			{
-				name: {
-					minWidth: 5,
-					get: ({ name }) => chalk.bold.whiteBright(name),
-				},
-				path: {
-					get: ({ path }) => chalk.blue(path),
-				},
-			},
-			{
-				'no-header': true,
-				sort: 'name',
-			}
-		);
-	}
+    cli.table(
+      bookmarks,
+      {
+        name: {
+          minWidth: 5,
+          get: ({ name }) => chalk.bold.whiteBright(name),
+        },
+        path: {
+          get: ({ path }) => chalk.blue(path),
+        },
+      },
+      {
+        'no-header': true,
+        sort: 'name',
+      }
+    );
+  }
 }

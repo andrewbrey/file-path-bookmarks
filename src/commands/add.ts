@@ -5,36 +5,36 @@ import { addBookmark, allBookmarks } from '../lib/bookmarks';
 import { userConfig } from '../lib/config';
 
 export default class Add extends Command {
-	static description = 'add a new file path bookmark';
+  static description = 'add a new file path bookmark';
 
-	static examples = [
-		dedent`
+  static examples = [
+    dedent`
 			$ file-path-bookmarks add
 			$ file-path-bookmarks add /some/absolute/path
 		`,
-	];
+  ];
 
-	static flags = {
-		name: flags.string({
-			char: 'n',
-			name: 'name',
-			description: 'name of this bookmark (will be converted to lower case)',
-		}),
-		help: flags.help({ char: 'h' }),
-	};
+  static flags = {
+    name: flags.string({
+      char: 'n',
+      name: 'name',
+      description: 'name of this bookmark (will be converted to lower case)',
+    }),
+    help: flags.help({ char: 'h' }),
+  };
 
-	static args = [{ name: 'path', description: 'absolute file path of bookmark (defaults to pwd)', required: false }];
+  static args = [{ name: 'path', description: 'absolute file path of bookmark (defaults to pwd)', required: false }];
 
-	async run() {
-		const { flags, args } = this.parse(Add);
+  async run() {
+    const { flags, args } = this.parse(Add);
 
-		const USER_CONFIG = await userConfig(this.config);
-		const { bookmarks } = allBookmarks(USER_CONFIG);
+    const USER_CONFIG = await userConfig(this.config);
+    const { bookmarks } = allBookmarks(USER_CONFIG);
 
-		const ERROR_MESSAGE = await addBookmark(USER_CONFIG, args.path || cwd(), bookmarks, flags.name);
+    const ERROR_MESSAGE = await addBookmark(USER_CONFIG, args.path || cwd(), bookmarks, flags.name);
 
-		if (ERROR_MESSAGE) {
-			this.log(ERROR_MESSAGE);
-		}
-	}
+    if (ERROR_MESSAGE) {
+      this.log(ERROR_MESSAGE);
+    }
+  }
 }

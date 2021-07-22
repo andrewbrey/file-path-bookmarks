@@ -1,39 +1,47 @@
-file-path-bookmarks
-=============================
+# file-path-bookmarks
 
 A simple file path bookmark management utility
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/file-path-bookmarks.svg)](https://npmjs.org/package/file-path-bookmarks)
 [![Downloads/week](https://img.shields.io/npm/dw/file-path-bookmarks.svg)](https://npmjs.org/package/file-path-bookmarks)
-[![License](https://img.shields.io/npm/l/file-path-bookmarks.svg)](https://github.com/file-path-bookmarks/blob/master/package.json)
+[![License](https://img.shields.io/npm/l/file-path-bookmarks.svg)](https://github.com/andrewbrey/file-path-bookmarks/blob/master/package.json)
 
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
+
+- [file-path-bookmarks](#file-path-bookmarks)
+- [Usage](#usage)
+- [Commands](#commands)
 <!-- tocstop -->
+
 # Usage
+
 <!-- usage -->
+
 ```sh-session
 $ npm install -g file-path-bookmarks
 $ file-path-bookmarks COMMAND
 running command...
 $ file-path-bookmarks (-v|--version|version)
-file-path-bookmarks/1.0.3 linux-x64 node-v12.16.1
+file-path-bookmarks/1.0.3 linux-x64 node-v16.4.1
 $ file-path-bookmarks --help [COMMAND]
 USAGE
   $ file-path-bookmarks COMMAND
 ...
 ```
+
 <!-- usagestop -->
+
 # Commands
+
 <!-- commands -->
-* [`file-path-bookmarks add [PATH]`](#file-path-bookmarks-add-path)
-* [`file-path-bookmarks configure`](#file-path-bookmarks-configure)
-* [`file-path-bookmarks find [NAME]`](#file-path-bookmarks-find-name)
-* [`file-path-bookmarks help [COMMAND]`](#file-path-bookmarks-help-command)
-* [`file-path-bookmarks list`](#file-path-bookmarks-list)
-* [`file-path-bookmarks remove [PATH]`](#file-path-bookmarks-remove-path)
+
+- [`file-path-bookmarks add [PATH]`](#file-path-bookmarks-add-path)
+- [`file-path-bookmarks configure`](#file-path-bookmarks-configure)
+- [`file-path-bookmarks find [NAME]`](#file-path-bookmarks-find-name)
+- [`file-path-bookmarks help [COMMAND]`](#file-path-bookmarks-help-command)
+- [`file-path-bookmarks list`](#file-path-bookmarks-list)
+- [`file-path-bookmarks remove [PATH]`](#file-path-bookmarks-remove-path)
 
 ## `file-path-bookmarks add [PATH]`
 
@@ -112,7 +120,7 @@ OPTIONS
   --all  see all commands in CLI
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.3/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
 
 ## `file-path-bookmarks list`
 
@@ -151,4 +159,5 @@ EXAMPLE
 ```
 
 _See code: [src/commands/remove.ts](https://github.com/andrewbrey/file-path-bookmarks/blob/v1.0.3/src/commands/remove.ts)_
+
 <!-- commandsstop -->
