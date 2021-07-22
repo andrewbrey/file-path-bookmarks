@@ -1,7 +1,7 @@
 {
   "name": "file-path-bookmarks",
   "description": "A simple file path bookmark management utility",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "author": "Andrew Brey <34140052+andrewbrey@users.noreply.github.com>",
   "license": "MIT",
   "homepage": "https://github.com/andrewbrey/file-path-bookmarks",
