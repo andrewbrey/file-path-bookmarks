@@ -6,7 +6,7 @@ import { lowerCase } from 'lodash';
 import { isAbsolute, join, normalize } from 'path';
 import dedent from 'ts-dedent';
 import { UserConfiguration } from '../config';
-import { prettyJSON, replaceEnvTokens } from '../util';
+import { addEnvTokens, prettyJSON, removeEnvTokens } from '../util';
 
 export interface Bookmark {
   name: string;
@@ -29,8 +29,10 @@ export const MAX_NAME_LENGTH = 20;
 export function allBookmarks(userConfig: UserConfiguration) {
   ensureBookmarksFileExists(userConfig);
 
-  const BOOKMARKS_PATH = join(replaceEnvTokens(userConfig.bookmarksFilePath), userConfig.bookmarksFileName);
+  const BOOKMARKS_PATH = join(removeEnvTokens(userConfig.bookmarksFilePath), userConfig.bookmarksFileName);
   const USER_BOOKMARKS = readJSONSync(BOOKMARKS_PATH) as SavedBookmarks;
+
+  USER_BOOKMARKS.bookmarks = USER_BOOKMARKS.bookmarks.map(bookmarkWithRealPath);
 
   return USER_BOOKMARKS;
 }
@@ -82,14 +84,14 @@ export async function addBookmark(
     name = lowerCase(name);
   }
 
-  const EXISTING = existingBookmarkByProperty(path, currentBookmarks, 'path');
+  const EXISTING = existingBookmarkByPath(path, currentBookmarks);
   if (EXISTING) {
     EXISTING.name = name;
   } else {
     currentBookmarks.push({ name, path });
   }
 
-  writeBookmarksFile(sortBookmarksByProperty(currentBookmarks, 'name'), userConfig);
+  writeBookmarksFile(sortBookmarksByName(currentBookmarks), userConfig);
 }
 
 export async function removeBookmark(
@@ -97,28 +99,28 @@ export async function removeBookmark(
   path: string,
   currentBookmarks: Bookmark[] = []
 ): Promise<void> {
-  const EXISTING_IDX = existingBookmarkIndexByProperty(path, currentBookmarks, 'path');
+  const EXISTING_IDX = existingBookmarkIndexByPath(path, currentBookmarks);
 
   if (EXISTING_IDX > -1) {
     currentBookmarks.splice(EXISTING_IDX, 1);
-    writeBookmarksFile(sortBookmarksByProperty(currentBookmarks, 'name'), userConfig);
+    writeBookmarksFile(sortBookmarksByName(currentBookmarks), userConfig);
   }
 }
 
-function existingBookmarkByProperty(newBookmarkPath: string, bookmarks: Bookmark[], property: keyof Bookmark) {
-  return bookmarks.find((bm) => normalize(bm[property]) === normalize(newBookmarkPath));
+function existingBookmarkByPath(newBookmarkPath: string, bookmarks: Bookmark[]) {
+  return bookmarks.find((bm) => normalize(bm.path) === normalize(newBookmarkPath));
 }
 
-function existingBookmarkIndexByProperty(newBookmarkPath: string, bookmarks: Bookmark[], property: keyof Bookmark) {
-  return bookmarks.findIndex((bm) => normalize(bm[property]) === normalize(newBookmarkPath));
+function existingBookmarkIndexByPath(newBookmarkPath: string, bookmarks: Bookmark[]) {
+  return bookmarks.findIndex((bm) => normalize(bm.path) === normalize(newBookmarkPath));
 }
 
-function sortBookmarksByProperty(bookmarks: Bookmark[], property: keyof Bookmark) {
-  return bookmarks.sort((a, b) => a[property].localeCompare(b[property]));
+function sortBookmarksByName(bookmarks: Bookmark[]) {
+  return bookmarks.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 function ensureBookmarksFileExists(userConfig: UserConfiguration) {
-  const BOOKMARKS_FILE = join(replaceEnvTokens(userConfig.bookmarksFilePath), userConfig.bookmarksFileName);
+  const BOOKMARKS_FILE = join(removeEnvTokens(userConfig.bookmarksFilePath), userConfig.bookmarksFileName);
 
   if (!existsSync(BOOKMARKS_FILE)) {
     mkdirpSync(userConfig.bookmarksFilePath);
@@ -126,8 +128,16 @@ function ensureBookmarksFileExists(userConfig: UserConfiguration) {
   }
 }
 
-function writeBookmarksFile(bookmarks: Bookmark[], userConfig: UserConfiguration) {
-  const BOOKMARKS_FILE = join(replaceEnvTokens(userConfig.bookmarksFilePath), userConfig.bookmarksFileName);
+function bookmarkWithEnvPath(b: Bookmark): Bookmark {
+  return { name: b.name, path: addEnvTokens(b.path) };
+}
 
-  writeFileSync(BOOKMARKS_FILE, prettyJSON({ bookmarks } as SavedBookmarks));
+function bookmarkWithRealPath(b: Bookmark): Bookmark {
+  return { name: b.name, path: removeEnvTokens(b.path) };
+}
+
+function writeBookmarksFile(bookmarks: Bookmark[], userConfig: UserConfiguration) {
+  const BOOKMARKS_FILE = join(removeEnvTokens(userConfig.bookmarksFilePath), userConfig.bookmarksFileName);
+
+  writeFileSync(BOOKMARKS_FILE, prettyJSON({ bookmarks: bookmarks.map(bookmarkWithEnvPath) } as SavedBookmarks));
 }

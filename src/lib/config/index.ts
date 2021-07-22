@@ -2,7 +2,7 @@ import { IConfig } from '@oclif/config';
 import { existsSync, mkdirpSync, readJSONSync, writeFileSync } from 'fs-extra';
 import { prompt } from 'inquirer';
 import { extname, isAbsolute, join } from 'path';
-import { prettyJSON, replaceEnvTokens } from '../util';
+import { prettyJSON, removeEnvTokens } from '../util';
 
 export interface UserConfiguration {
   bookmarksFileName: string;
@@ -71,7 +71,7 @@ async function configPrompts(runtime: IConfig) {
       message: 'Where should bookmark file be saved?',
       name: 'bookmarksFilePath',
       validate: (answer: string) => {
-        return isAbsolute(replaceEnvTokens(answer)) ? true : 'Must be an absolute path';
+        return isAbsolute(removeEnvTokens(answer)) ? true : 'Must be an absolute path';
       },
     },
   ]);
